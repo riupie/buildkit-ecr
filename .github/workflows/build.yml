@@ -18,7 +18,7 @@ on:
 
 env:
   IMAGE_NAME: riupie/buildkit-ecr
-  BUILDKIT_VERSION: v0.29.0
+  BUILDKIT_VERSION: v0.30.0
   ECR_HELPER_VERSION: v0.12.0
 
 jobs:
