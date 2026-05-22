@@ -3,17 +3,19 @@
   "extends": ["config:recommended"],
   "labels": ["dependencies"],
   "prConcurrentLimit": 5,
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "description": "BuildKit version in workflow env and Dockerfile ARG",
-      "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$", "^Dockerfile$"],
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/", "/^Dockerfile$/"],
       "matchStrings": ["BUILDKIT_VERSION[=:]\\s*(?<currentValue>v[\\d.]+)"],
       "depNameTemplate": "moby/buildkit",
       "datasourceTemplate": "docker"
     },
     {
+      "customType": "regex",
       "description": "ECR credential helper version in workflow env and Dockerfile ARG",
-      "fileMatch": ["^\\.github/workflows/[^/]+\\.ya?ml$", "^Dockerfile$"],
+      "managerFilePatterns": ["/^\\.github/workflows/[^/]+\\.ya?ml$/", "/^Dockerfile$/"],
       "matchStrings": ["ECR_HELPER_VERSION[=:]\\s*(?<currentValue>v[\\d.]+)"],
       "depNameTemplate": "awslabs/amazon-ecr-credential-helper",
       "datasourceTemplate": "github-releases"
@@ -22,7 +24,7 @@
   "packageRules": [
     {
       "description": "Group upstream image dependency bumps into one PR",
-      "matchManagers": ["regex"],
+      "matchManagers": ["custom.regex"],
       "groupName": "upstream dependencies"
     },
     {
