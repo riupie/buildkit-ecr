@@ -16,11 +16,11 @@ RUN apk add --no-cache git ca-certificates
 RUN git clone --depth 1 --branch ${ECR_HELPER_VERSION} \
     https://github.com/awslabs/amazon-ecr-credential-helper.git /src
 
-WORKDIR /src
+WORKDIR /src/ecr-login
 RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
     go build -trimpath \
     -o /out/docker-credential-ecr-login \
-    ./ecr-login/cmd/docker-credential-ecr-login
+    ./cmd/docker-credential-ecr-login
 
 # ── Standard (root) variant ───────────────────────────────────────────────────
 FROM moby/buildkit:${BUILDKIT_VERSION} AS standard
