@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-ARG BUILDKIT_VERSION=v0.32.2
+ARG BUILDKIT_VERSION=v0.33.0
 ARG ECR_HELPER_VERSION=v0.12.0
 
 # Download the official pre-built binary for the target platform.
