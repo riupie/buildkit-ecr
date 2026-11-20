@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-ARG BUILDKIT_VERSION=v0.34.0
-ARG ECR_HELPER_VERSION=v0.12.0
+ARG BUILDKIT_VERSION=v0.35.1
+ARG ECR_HELPER_VERSION=v0.13.0
 
 # Download the official pre-built binary for the target platform.
 # Runs on the native build host (no QEMU) via --platform=$BUILDPLATFORM.
